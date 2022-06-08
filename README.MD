@@ -26,23 +26,25 @@ If Python is already exist:
     ```
     $ python3 -m venv venv
     ```
-* and activate venv:
+* And activate venv:
+
     For Windows:
     ```
     $ venv\Scripts\activate
     ```
-To remind you that you have activated a virtual environment, the activation command 
-modifies your command prompt to include the name of the environment:
-
-    ```
-    (venv) $
-    ```
-
+    
     For Linux or macOS:
-
     ```
     $ source venv/bin/activate
     ```
+    
+To remind you that you have activated a virtual environment, the activation command 
+modifies your command prompt to include the name of the environment:
+
+   ```
+    (venv) $
+   ```  
+
 * Install all packages from requirements.txt with this command:
     ```
     $ pip install -r requirements.txt
