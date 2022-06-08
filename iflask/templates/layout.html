@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"
+    type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"
+    type="image/x-icon">
+    <title>
+        {% if title %}
+            I-flask-{{title}}
+        {% else %}
+           I-flask
+        {% endif %}
+    </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{{url_for('home')}}" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{{url_for('register')}}" class="nav-link">Register</a></li>
+        <li class="nav-item"><a href="{{url_for('login')}}" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="{{url_for('about')}}" class="nav-link">About</a></li>
+      </ul>
+
+    </header>
+<div class="d-flex justify-content-center py-3">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}<br>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+   {%block content %}{% endblock %}
+</div>
+
+</body>
+</html>
