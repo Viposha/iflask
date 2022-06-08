@@ -8,5 +8,6 @@ It will contain:
 - User can create post with photos
 - Followers
 - Likes
+- And many other
 
 
