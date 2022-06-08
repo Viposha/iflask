@@ -13,9 +13,11 @@ It will contain:
 
 ## Setup
 To run this project, install Python 3.9 or newest from [Python.org](https://www.python.org/downloads/).
+
 If Python is already exist:
-**Git clone**
-* Choose directory through terminal"
+
+* Git clone
+* Choose directory where will you storage this app
 * Run
     ```
     $ git clone https://github.com/Viposha/iflask.git
@@ -31,10 +33,13 @@ If Python is already exist:
     ```
 To remind you that you have activated a virtual environment, the activation command 
 modifies your command prompt to include the name of the environment:
+
     ```
     (venv) $
     ```
+
     For Linux or macOS:
+
     ```
     $ source venv/bin/activate
     ```
