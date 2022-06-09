@@ -1,5 +1,6 @@
 from iflask import app
 from flask import render_template, url_for
+from iflask.forms import RegistrationForm, LoginForm
 
 
 @app.route('/')
@@ -13,11 +14,13 @@ def about():
 	return render_template('about.html', title='About')
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-	return render_template('register.html', title='Register')
+	form = RegistrationForm()
+	return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-	return render_template('login.html', title='Login')
+	form = LoginForm()
+	return render_template('login.html', title='Login', form=form)
