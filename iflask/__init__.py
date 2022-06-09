@@ -8,4 +8,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+from .models import User, Post
+db.create_all()
+
 from iflask import routes
