@@ -14,10 +14,9 @@ It will contain:
 ## Setup
 To run this project, install Python 3.9 or newest from [Python.org](https://www.python.org/downloads/).
 
-If Python is already exist:
+If Python exists:
 
-* Git clone
-* Choose directory where will you storage this app
+* Choose directory where you will store this app
 * Run
     ```
     $ git clone https://github.com/Viposha/iflask.git
@@ -53,7 +52,7 @@ modifies your command prompt to include the name of the environment:
     ```
     $ python iflask.py
     ```
-If everything alright you will see such result:
+If everything is alright you will see such result:
 ```
  * Serving Flask app 'iflask' (lazy loading)
  * Environment: production                                                         
