@@ -1,4 +1,4 @@
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user, login_required
 from iflask import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request
 from iflask.forms import RegistrationForm, LoginForm
@@ -45,3 +45,19 @@ def login():
 	return render_template('login.html', title='Login', form=form)
 
 
+@app.route("/logout")
+def logout_page():
+	logout_user()
+	return redirect(url_for('home'))
+
+
+@app.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+	return render_template('account.html', title='Account')
+
+
+@app.route("/new_post", methods=['GET', 'POST'])
+@login_required
+def new_post():
+	return render_template('new_post.html', title='Account')

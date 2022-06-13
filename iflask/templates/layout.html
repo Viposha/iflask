@@ -17,14 +17,18 @@
 </head>
 <body>
 <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{{url_for('home')}}" class="btn btn-outline-info" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="{{url_for('register')}}" class="btn btn-outline-info">Register</a></li>
-        <li class="nav-item"><a href="{{url_for('login')}}" class="btn btn-outline-info">Login</a></li>
-        <li class="nav-item"><a href="{{url_for('about')}}" class="btn btn-outline-info">About</a></li>
-      </ul>
-
-    </header>
+    <ul class="nav nav-pills">
+        {% if current_user.is_authenticated %}
+            <li class="nav-item "><a href="{{url_for('new_post')}}" class="btn btn-outline-info">New Post</a></li>
+            <li class="nav-item "><a href="{{url_for('account')}}" class="btn btn-outline-info">Account</a></li>
+            <li class="nav-item "><a href="{{url_for('logout_page')}}" class="btn btn-outline-info">Logout</a></li>
+        {% else %}
+            <li class="nav-item"><a href="{{url_for('home')}}" class="btn btn-outline-info">Home</a></li>
+            <li class="nav-item"><a href="{{url_for('register')}}" class="btn btn-outline-info">Register</a></li>
+            <li class="nav-item"><a href="{{url_for('login')}}" class="btn btn-outline-info">Login</a></li>
+        {% endif %}
+    </ul>
+</header>
 <div class="d-flex justify-content-center py-2">
  {% with messages = get_flashed_messages(with_categories = true) %}
         {% if messages %}
