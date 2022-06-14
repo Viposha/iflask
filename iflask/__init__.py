@@ -17,7 +17,7 @@ login_manager.login_view = 'login'
 login_manager.init_app(app)
 
 
-# from .models import User, Post
-# db.create_all()
+from .models import User, Post
+db.create_all()
 
 from iflask import routes
