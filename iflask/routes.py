@@ -1,4 +1,6 @@
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+
 from iflask import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request, current_app
 from iflask.forms import RegistrationForm, LoginForm, CreatePostForm
@@ -8,8 +10,8 @@ from iflask.models import User, Post
 @app.route('/')
 @app.route('/home')
 def home():
-    posts = Post.query.order_by(Post.date_posted.desc())
-    return render_template('home.html', posts=posts)
+	posts = Post.query.order_by(Post.date_posted.desc())
+	return render_template('home.html', posts=posts)
 
 
 @app.route('/about')
