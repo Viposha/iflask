@@ -8,7 +8,8 @@ from iflask.models import User, Post
 @app.route('/')
 @app.route('/home')
 def home():
-	return render_template('home.html')
+	posts = Post.query.order_by(Post.date_posted.desc())
+	return render_template('home.html', posts=posts)
 
 
 @app.route('/about')

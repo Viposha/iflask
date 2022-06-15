@@ -19,6 +19,7 @@
 <header class="d-flex justify-content-center py-3">
     <ul class="nav nav-pills">
         {% if current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{url_for('home')}}" class="btn btn-outline-info">Home</a></li>
             <li class="nav-item "><a href="{{url_for('new_post')}}" class="btn btn-outline-info">New Post</a></li>
             <li class="nav-item "><a href="{{url_for('account')}}" class="btn btn-outline-info">Account</a></li>
             <li class="nav-item "><a href="{{url_for('logout_page')}}" class="btn btn-outline-info">Logout</a></li>

@@ -1,5 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-Home page
+<form method="POST" enctype="multipart/form-data">
+{% for post in posts %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+          <h2><div class="article-title">{{ post.title }}</div></h2>
+        <p class="article-content">{{ post.description}}</p>
+      </div>
+    </article>
+{% endfor %}
+</form>
 {% endblock %}
