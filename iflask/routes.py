@@ -1,4 +1,6 @@
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+
 from iflask import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request
 from iflask.forms import RegistrationForm, LoginForm, CreatePostForm
