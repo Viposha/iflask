@@ -11,6 +11,7 @@
           <h2><div class="article-title">{{ post.title }}</div></h2>
         <p class="article-content">{{ post.description}}</p>
       </div>
+      <img src="{{ url_for('static', filename='images/' + post.picture) }}",  width="500" ,height="600">
     </article>
 {% endfor %}
 </form>
