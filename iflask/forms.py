@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileAllowed
 from iflask.models import User
-from wtforms import StringField, PasswordField, EmailField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, EmailField, SubmitField, BooleanField, TextAreaField, FileField
 from wtforms.validators import DataRequired, EqualTo, Email, Length, ValidationError
 
 
@@ -27,3 +28,12 @@ class LoginForm(FlaskForm):
 	password = PasswordField('Password', validators=[DataRequired()])
 	remember = BooleanField('Remember me')
 	submit = SubmitField('Login')
+
+
+class CreatePostForm(FlaskForm):
+	title = StringField('Title', validators=[DataRequired()])
+	description = TextAreaField('Description', validators=[DataRequired()])
+	picture = FileField('Upload Image', validators=[FileAllowed(['jpg', 'png'])])
+	submit = SubmitField('Post')
+
+

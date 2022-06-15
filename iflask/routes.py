@@ -1,7 +1,7 @@
 from flask_login import current_user, login_user, logout_user, login_required
 from iflask import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request
-from iflask.forms import RegistrationForm, LoginForm
+from iflask.forms import RegistrationForm, LoginForm, CreatePostForm
 from iflask.models import User, Post
 
 
@@ -60,4 +60,12 @@ def account():
 @app.route("/new_post", methods=['GET', 'POST'])
 @login_required
 def new_post():
-	return render_template('new_post.html', title='Account')
+	form = CreatePostForm()
+	if form.validate_on_submit():
+		post = Post(title=form.title.data, description=form.description.data, author=current_user, picture=form.picture.data)
+		db.session.add(post)
+		db.session.commit()
+		flash('Your post has been created!', 'success')
+		return redirect(url_for('home'))
+	return render_template('new_post.html', title='New Post', form=form, legend='New Post')
+
