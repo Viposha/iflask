@@ -92,3 +92,9 @@ def new_post():
         return redirect(url_for('home'))
     return render_template('new_post.html', title='New Post', form=form, legend='New Post')
 
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    user = User.query.filter_by(username=username).first()
+    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc())
+    return render_template('user_posts.html', posts=posts, user=user)
