@@ -6,10 +6,11 @@
     <article class="media content-section">
       <div class="media-body">
         <div class="article-metadata">
-          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d, %H:%M') }}</small>
+          <h2><a href="url_for('account')">{{ post.author.username }}</a></h2>
+          <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y %H:%M') }}</small>
         </div>
-          <h2><div class="article-title">{{ post.title }}</div></h2>
-        <p class="article-content">{{ post.description}}</p>
+          <h2><div class="d-flex justify-content-center py-3">{{ post.title }}</div></h2>
+          <p class="article-content">{{ post.description}}</p>
       </div>
       <img src="{{ url_for('static', filename='images/' + post.picture) }}",  width="500" ,height="600">
     </article>
