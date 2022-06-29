@@ -1,7 +1,17 @@
 body {
-  background: #fafafa;
-  margin-top: 1rem;
+  background-color: #fafafa;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
 .btn-outline-info{
   color: #120707;
 }
