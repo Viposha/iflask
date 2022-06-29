@@ -1,3 +1,7 @@
+import os
+import secrets
+from PIL import Image
+
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 
@@ -59,16 +63,38 @@ def logout_page():
 def account():
     return render_template('account.html', title='Account')
 
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(current_app.root_path, 'static/images', picture_fn)
+
+    output_size = (500, 600)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
 
 @app.route("/new_post", methods=['GET', 'POST'])
 @login_required
 def new_post():
     form = CreatePostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, description=form.description.data, author=current_user, picture=form.picture.data)
+        if form.picture.data:
+            filename = save_picture(form.picture.data)
+        post = Post(title=form.title.data, description=form.description.data, author=current_user,
+                    picture=filename)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('home'))
     return render_template('new_post.html', title='New Post', form=form, legend='New Post')
 
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    user = User.query.filter_by(username=username).first()
+    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc())
+    return render_template('user_posts.html', posts=posts, user=user)
