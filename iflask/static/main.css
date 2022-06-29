@@ -1,9 +1,6 @@
 body {
   background-color: #fafafa;
 }
-border {
-  border: solid;
-}
 
 ul {
   list-style: none;
@@ -17,4 +14,17 @@ a {
 
 .btn-outline-info{
   color: #120707;
+}
+
+.bordered {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+}
+
+.content-section {
+  padding: 15px;
+}
+
+.content-section img {
+  border-radius: 10px;
 }

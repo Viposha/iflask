@@ -4,8 +4,7 @@
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
 {% for post in posts %}
-  <div class="border" >
-    <article class="media content-section">
+    <article class="media content-section bordered">
       <div class="media-body">
         <div class="article-metadata">
           <h2><a href="{{url_for('user_posts', username=post.author.username)}}">{{ post.author.username }}</a></h2>
@@ -17,7 +16,6 @@
       <img src="{{ url_for('static', filename='images/' + post.picture) }}",  width="500" ,height="600">
     </article>
   <br>
-    </div>
   <br>
 {% endfor %}
 </form>
