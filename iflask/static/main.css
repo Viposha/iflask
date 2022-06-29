@@ -1,6 +1,9 @@
 body {
   background-color: #fafafa;
 }
+border {
+  border: solid;
+}
 
 ul {
   list-style: none;
