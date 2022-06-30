@@ -1,21 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    <h1 class="mb-3">Posts by {{ user.username }}</h1><br>
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-            <div class="article-metadata">
-                <h2> <div class="mr-2" >{{ post.author.username }}</div> </h2>
-              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-            </div>
-            <h2><div class="article-title d-flex justify-content-center py-3">{{ post.title }}</div></h2>
-            <p class="article-content">{{ post.description }}</p>
-            <img src="{{ url_for('static', filename='images/' + post.picture) }}",  width="500" ,height="600">
-          </div>
-        </article>
-    <br>
-    <br>
-    {% endfor %}
-</form>
+
+<h1 class="mb-3">Posts by {{ user.username }}</h1><br>
+{% for post in posts %}
+    <article class="media content-section bordered">
+        <div class="media-body">
+        <div class="article-metadata">
+            <h2> <div class="mr-2" >{{ post.author.username }}</div> </h2>
+          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <h2><div class="article-title d-flex justify-content-center py-1">{{ post.title }}</div></h2>
+        <p class="article-content">{{ post.description }}</p>
+        <img src="{{ url_for('static', filename='images/' + post.picture) }}",  width="500" ,height="600">
+      </div>
+    </article>
+{% endfor %}
+
 {% endblock content %}
