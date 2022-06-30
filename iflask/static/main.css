@@ -12,6 +12,13 @@ a {
   text-decoration: none;
 }
 
+.container {
+  width: 100%;
+  max-width: 560px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
 .btn-outline-info{
   color: #120707;
 }
@@ -21,10 +28,62 @@ a {
   border-radius: 10px;
 }
 
+
+/***** section *****/
+
 .content-section {
   padding: 15px;
+  margin-bottom: 15px;
+}
+
+.content-section:last-child {
+  margin-bottom: 0;
 }
 
 .content-section img {
   border-radius: 10px;
+}
+
+/***** section end *****/
+
+
+/***** nav *****/
+
+.nav-item-link {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px 10px;
+  color: #000;
+  transition: color 0.2s;
+}
+
+.nav-item-link.active,
+.nav-item-link:hover {
+  color: #0d6efd;
+}
+
+.nav-item-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: inline-block;
+  height: 1px;
+  width: 0;
+  background-color: #0d6efd;
+  transition: width 0.2s;
+}
+
+.nav-item-link.active::before,
+.nav-item-link:hover::before {
+  width: 100%;
+}
+
+/***** nav end *****/
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
 }
