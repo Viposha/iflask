@@ -83,8 +83,20 @@ a {
 
 /***** nav end *****/
 
-.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
+
+.form-control-file::-webkit-file-upload-button{
+  display: inline-block;
+  vertical-align: middle;
+  border: 0;
+  padding: 7px 15px;
+  background-color: #6c757d;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: background-color 0.2s;
+}
+
+.form-control-file::-webkit-file-upload-button:hover{
+  background-color: #5c636a;
 }

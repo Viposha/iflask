@@ -33,9 +33,8 @@
                     {{ form.description(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
-            <div class="form-group" >
-                {{ form.picture.label(class="btn btn-secondary") }}
-                {{ form.picture(class="form-control-file is-hidden") }}
+            <div class="form-group">
+                {{ form.picture(class="form-control-file", accept=".jpg, .jpeg, .png") }}
                 {% if form.picture.errors %}
                      {% for error in form.picture.errors %}
                             <span class="text-danger">{{ error }}</span></br>
