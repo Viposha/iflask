@@ -29,6 +29,12 @@ a {
   background-color: #FFFFFF
 }
 
+.account-img {
+  height:85px;
+  width: 85px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
 
 /***** section *****/
 

@@ -61,7 +61,9 @@ def logout_page():
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
-    return render_template('account.html', title='Account')
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('account.html', title='Account', image_file=image_file)
+
 
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
