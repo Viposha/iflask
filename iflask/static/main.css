@@ -36,6 +36,13 @@ a {
   margin-bottom: 16px;
 }
 
+.article-img {
+  height:85px;
+  width: 85px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
 /***** section *****/
 
 .content-section {
