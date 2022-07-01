@@ -61,7 +61,7 @@ def logout_page():
 @app.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
-    image_file = url_for('static', filename='images/' + current_user.image_file)
+    image_file = url_for('static', filename='images/avatar/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file)
 
 
