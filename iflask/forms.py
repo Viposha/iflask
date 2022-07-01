@@ -37,3 +37,9 @@ class CreatePostForm(FlaskForm):
 	submit = SubmitField('Post')
 
 
+class UploadAvatarForm(FlaskForm):
+	picture = FileField('Upload Image', validators=[FileAllowed(['jpg', 'png'])])
+	submit = SubmitField('Post')
+
+
+

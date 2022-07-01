@@ -7,7 +7,8 @@
     <article class="media content-section bordered">
       <div class="media-body">
         <div class="article-metadata d-flex justify-content-between align-items-center">
-          <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/avatar/' + post.author.image_file) }}">
+          <a href="{{url_for('user_posts', username=post.author.username)}}">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/avatar/' + post.author.image_file) }}"></a>
           <h2><a href="{{url_for('user_posts', username=post.author.username)}}">{{ post.author.username }}</a></h2>
           <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y %H:%M') }}</small>
         </div>

@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 
 from iflask import app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request, current_app
-from iflask.forms import RegistrationForm, LoginForm, CreatePostForm
+from iflask.forms import RegistrationForm, LoginForm, CreatePostForm, UploadAvatarForm
 from iflask.models import User, Post
 
 
@@ -58,13 +58,6 @@ def logout_page():
     return redirect(url_for('home'))
 
 
-@app.route("/account", methods=['GET', 'POST'])
-@login_required
-def account():
-    image_file = url_for('static', filename='images/avatar/' + current_user.image_file)
-    return render_template('account.html', title='Account', image_file=image_file)
-
-
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -77,6 +70,34 @@ def save_picture(form_picture):
     i.save(picture_path)
 
     return picture_fn
+
+
+def save_avatar(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(current_app.root_path, 'static/images/avatar/', picture_fn)
+
+    output_size = (100, 100)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
+
+@app.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UploadAvatarForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            filename = save_avatar(form.picture.data)
+            current_user.image_file = filename
+            db.session.commit()
+            flash('Your avatar changed!', 'success')
+    image_file = url_for('static', filename='images/avatar/' + current_user.image_file)
+    return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 
 @app.route("/new_post", methods=['GET', 'POST'])

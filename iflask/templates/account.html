@@ -12,5 +12,18 @@ Account Page
       <p class="text-secondary">{{ current_user.email }}</p>
     </div>
   </div>
+   <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group mb-2">
+            <legend class = border-bottom mb-4>Change avatar</legend>
+            <div class="form-group">
+                {{ form.picture.label(class="form-control-label") }}
+                {{ form.picture(class="form-control form-control-lg") }}
+            </div>
+        </fieldset>
+        <div class="form-group mt-4">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
 </div>
 {% endblock %}
